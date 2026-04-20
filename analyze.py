@@ -5,9 +5,9 @@ analyze.py — FINAL (STRICT + BLUR + VALIDATION + NEW THRESHOLDS)
 import numpy as np
 import cv2
 
-from core.gemini.gemini_analyzer import analyze_with_gemini
-from core.validation.validators import run_validation
-from core.tamper.ela_detector import run_ela
+from gemini_analyzer import analyze_with_gemini
+from validators import run_validation
+from ela_detector import run_ela
 
 
 # ── Weights ─────────────────────────────────────
