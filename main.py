@@ -38,10 +38,28 @@ class Handler(BaseHTTPRequestHandler):
 
     # ---------- HEALTH ----------
     def do_GET(self):
-        if self.path == "/health":
-            self.send_json({"status": "ok"})
-        else:
-            self.send_json({"error": "Not found"}, 404)
+    if self.path == "/health":
+        self.send_json({"status": "ok"})
+
+    # ✅ TEMP TEST ROUTE
+    elif self.path == "/detect-test":
+        try:
+            # use any sample image inside repo
+            sample_path = "test.jpg"   # 👈 add this image in repo
+
+            result = analyze_document(sample_path)
+
+            self.send_json({
+                "message": "detect working",
+                "score": result.get("score"),
+                "verdict": result.get("verdict")
+            })
+
+        except Exception as e:
+            self.send_json({"error": str(e)}, 500)
+
+    else:
+        self.send_json({"error": "Not found"}, 404)
 
     # ---------- POST ----------
     def do_POST(self):
