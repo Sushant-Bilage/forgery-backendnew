@@ -3,7 +3,7 @@ import json
 import tempfile
 import os
 
-from core.pipeline.analyze import analyze_document
+from analyze import analyze_document
 
 CORS_HEADERS = {
     "Access-Control-Allow-Origin": "*",
